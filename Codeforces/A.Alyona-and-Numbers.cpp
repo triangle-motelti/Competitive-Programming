@@ -25,13 +25,21 @@ public:
     void solve() {
         ll n, m; cin>>n>>m;
         
-        ll s = n + m;
-        ll ans = s - (s%5);
+        vector<ll> x(5, 0), y(5, 0);
+        
+        for (int i = 1; i <= n; i++)
+            x[i % 5]++;
+            
+        for (int i = 1; i <= m; i++)
+            y[i % 5]++;
+            
+        ll ans = x[0] * y[0] + x[1] * y[4] + x[2] * y[3] + x[3] * y[2] + x[4] * y[1];
+
         cout<<ans<<endl;
     }
 };
 
 int main() {
-    fast_io;
+    fast_io; 
     Solution().solve();
 }
